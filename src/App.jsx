@@ -9,13 +9,17 @@ import Puno from "./pages/Puno";
 import Juliaca from "./pages/Juliaca";
 import Nosotros from "./pages/Nosotros";
 import MiCuenta from "./pages/MiCuenta";
+import ChatSoporte from "./pages/ChatSoporte";
 
 import Dashboard from "./admin/Dashboard";
 import HabitacionesAdmin from "./admin/HabitacionesAdmin";
 import ComentariosAdmin from "./admin/ComentariosAdmin";
 import UsuariosAdmin from "./admin/UsuariosAdmin";
+import ColaboracionesAdmin from "./admin/ColaboracionesAdmin";
+import AtencionAlClienteAdmin from "./admin/AtencionAlClienteAdmin";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ProtectedUserRoute from "./components/ProtectedUserRoute";
+import FloatingChat from "./components/FloatingChat";
 
 
 function App() {
@@ -67,6 +71,21 @@ function App() {
           element={<ProtectedRoute><UsuariosAdmin /></ProtectedRoute>}
         />
 
+        <Route
+          path="/admin/colaboraciones"
+          element={<ProtectedRoute><ColaboracionesAdmin /></ProtectedRoute>}
+        />
+
+        <Route
+          path="/admin/atencion-al-cliente"
+          element={<ProtectedRoute><AtencionAlClienteAdmin /></ProtectedRoute>}
+        />
+
+        <Route
+          path="/chat-soporte"
+          element={<ProtectedUserRoute><ChatSoporte /></ProtectedUserRoute>}
+        />
+
         <Route path="/puno" element={<Puno />} 
         />
 
@@ -83,6 +102,7 @@ function App() {
 
       </Routes>
 
+      <FloatingChat />
     </BrowserRouter>
   );
 }

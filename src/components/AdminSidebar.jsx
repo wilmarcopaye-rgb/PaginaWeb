@@ -132,6 +132,24 @@ function AdminSidebar() {
         >
           👥 Usuarios
         </Link>
+
+        <Link
+          to="/admin/colaboraciones"
+          style={{
+            padding: "1rem 1.5rem",
+            color: "white",
+            textDecoration: "none",
+            display: "flex",
+            alignItems: "center",
+            gap: "0.75rem",
+            transition: "background-color 0.2s",
+            fontSize: "0.95rem"
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.15)"}
+          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "transparent"}
+        >
+          🤝 Colaboraciones
+        </Link>
       </nav>
     </aside>
   );

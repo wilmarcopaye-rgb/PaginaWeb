@@ -1,13 +1,15 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import FormularioColaboracion from "../components/FormularioColaboracion";
 
 function MiCuenta(){
 
   const { usuario, esAdmin, logout } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
 
   async function handleLogout() {
     await logout();
@@ -102,8 +104,27 @@ function MiCuenta(){
           marginTop: "2rem",
           display: "flex",
           gap: "1rem",
-          justifyContent: "center"
+          justifyContent: "center",
+          flexWrap: "wrap"
         }}>
+          <button
+            onClick={() => setMostrarFormulario(true)}
+            style={{
+              padding: "0.75rem 2rem",
+              backgroundColor: "#003087",
+              color: "white",
+              border: "none",
+              borderRadius: "4px",
+              cursor: "pointer",
+              fontSize: "1rem",
+              fontWeight: "bold",
+              transition: "background-color 0.2s"
+            }}
+            onMouseEnter={(e) => e.target.style.backgroundColor = "#002268"}
+            onMouseLeave={(e) => e.target.style.backgroundColor = "#003087"}
+          >
+            📞 Contáctanos con nosotros
+          </button>
           <button
             onClick={handleLogout}
             style={{
@@ -123,6 +144,10 @@ function MiCuenta(){
             Cerrar Sesión
           </button>
         </div>
+
+        {mostrarFormulario && (
+          <FormularioColaboracion onClose={() => setMostrarFormulario(false)} />
+        )}
 
       </div>
 

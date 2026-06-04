@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import UsuarioMenu from "./UsuarioMenu";
+import Notificaciones from "./Notificaciones";
 
 function Navbar() {
   return (
@@ -23,6 +24,7 @@ function Navbar() {
         <Link to="/nosotros">Sobre VIVOO</Link>
       </div>
 
+      <Notificaciones />
       <UsuarioMenu />
 
     </nav>
