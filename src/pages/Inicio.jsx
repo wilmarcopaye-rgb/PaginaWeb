@@ -95,11 +95,11 @@ function Inicio() {
 
             <select value={precioMax} onChange={(e) => setPrecioMax(e.target.value)}>
               <option value="">Precio Máximo</option>
+              <option value="100">Hasta S/. 100</option>
               <option value="200">Hasta S/. 200</option>
               <option value="300">Hasta S/. 300</option>
               <option value="500">Hasta S/. 500</option>
               <option value="800">Hasta S/. 800</option>
-              <option value="1000">Hasta S/. 1000</option>
             </select>
 
             <button onClick={handleBuscar}>Buscar</button>
