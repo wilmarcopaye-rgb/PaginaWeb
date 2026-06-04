@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../services/supabase";
 import { Link } from "react-router-dom";
-import AdminSidebar from "../components/AdminSidebar";
 
 function ComentariosAdmin() {
 
@@ -25,11 +24,12 @@ function ComentariosAdmin() {
         .order("nombre");
 
       if (habError) {
+        console.error("Error cargando habitaciones:", habError);
       }
 
       setHabitaciones(habitacionesData || []);
 
-      // Cargar comentarios - Sin join
+      // Cargar comentarios
       let query = supabase
         .from("comentarios")
         .select("*")
@@ -42,12 +42,14 @@ function ComentariosAdmin() {
       const { data, error } = await query;
 
       if (error) {
+        console.error("Error cargando comentarios:", error);
         setComentarios([]);
         return;
       }
 
       setComentarios(data || []);
     } catch (err) {
+      console.error("Error:", err);
       setComentarios([]);
     } finally {
       setCargando(false);
@@ -76,37 +78,20 @@ function ComentariosAdmin() {
       setComentarios(comentarios.filter(c => c.id !== id));
     } catch (err) {
       alert("Error al eliminar");
+      console.error(err);
     }
   }
 
   return (
     <div style={{
-      display: "flex",
-      minHeight: "100vh",
-      background: "#f5f7fa"
+      padding: "2rem",
+      maxWidth: "1200px",
+      margin: "0 auto"
     }}>
-      <AdminSidebar />
-      <div style={{
-        flex: 1,
-        padding: "2.5rem",
-        overflow: "auto",
-        marginLeft: "220px",
-        width: "calc(100% - 220px)",
-        maxWidth: "1200px",
-        margin: "0 auto"
-      }}>
-        <h1 style={{ 
-          marginTop: 0, 
-          marginBottom: "2.5rem",
-          paddingBottom: "1.5rem",
-          borderBottom: "2px solid #e0e0e0",
-          fontSize: "2.2rem",
-          color: "#003087",
-          fontWeight: "700"
-        }}>📝 Gestión de Comentarios</h1>
+      <h1 style={{ marginTop: 0 }}>📝 Gestión de Comentarios</h1>
 
-        {/* Filtro */}
-        <div style={{
+      {/* Filtro */}
+      <div style={{
         backgroundColor: "white",
         padding: "1.5rem",
         borderRadius: "8px",
@@ -270,7 +255,6 @@ function ComentariosAdmin() {
             </table>
           </div>
         )}
-      </div>
       </div>
     </div>
   );

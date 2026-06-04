@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import HabitacionCard from "../components/HabitacionCard";
-import { supabase } from "../services/supabase";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { supabase } from "../services/supabase";
+import HabitacionCard from "../components/HabitacionCard";
 
-function Habitaciones() {
-
+function Puno() {
   const [habitaciones, setHabitaciones] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
@@ -21,6 +20,7 @@ function Habitaciones() {
       const { data, error: err } = await supabase
         .from("habitaciones")
         .select("*")
+        .eq("ciudad", "Puno")
         .order("fecha_publicacion", { ascending: false });
 
       if (err) {
@@ -39,12 +39,13 @@ function Habitaciones() {
   return (
     <>
       <Navbar />
+
       <div style={{ padding: "2rem", maxWidth: "1200px", margin: "0 auto" }}>
-        <h1>Todas las Habitaciones</h1>
-        
+        <h1>Habitaciones en Puno</h1>
+
         {cargando && <p>Cargando habitaciones...</p>}
         {error && <p style={{ color: "red" }}>{error}</p>}
-        {!cargando && habitaciones.length === 0 && <p>No hay habitaciones disponibles</p>}
+        {!cargando && habitaciones.length === 0 && <p>No hay habitaciones disponibles en Puno</p>}
 
         {!cargando && habitaciones.length > 0 && (
           <div className="grid" style={{
@@ -65,9 +66,10 @@ function Habitaciones() {
           </div>
         )}
       </div>
+
       <Footer />
     </>
   );
 }
 
-export default Habitaciones;
+export default Puno;
