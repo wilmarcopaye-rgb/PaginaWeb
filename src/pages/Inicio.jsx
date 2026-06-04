@@ -65,7 +65,7 @@ function Inicio() {
         <div className="hero-content">
 
           <h1>
-            Deja de buscar.
+            Deja de buscar y
             <br />
             Empieza a vivir.
           </h1>
