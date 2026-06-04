@@ -68,7 +68,7 @@ function Login() {
           <h1>VIVOO</h1>
 
           <p>
-            Deja de buscar.
+            Deja de buscar y
             Empieza a vivir.
           </p>
 
