@@ -702,3 +702,129 @@
   color: #003087;
   border: 1px solid #003087;
 }
+/* =======================
+   FOOTER MODERNO
+======================= */
+
+.footer {
+  background: #003087; /* Azul profesional */
+  color: white;
+  padding: 50px 20px;
+  text-align: center;
+  border-top: 5px solid #FFED00; /* Línea decorativa amarilla */
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  text-align: left;
+}
+
+.footer-brand {
+  text-align: left;
+}
+
+.footer-brand h2 {
+  color: #FFED00; /* Amarillo dinámico para el logo */
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.footer-brand p {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.footer-contacto {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.social-links {
+  display: flex;
+  gap: 20px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 8px 16px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.social-link.instagram:hover {
+  background: linear-gradient(45deg, #f09433, #d62976, #962fbf);
+  transform: translateY(-2px);
+}
+
+.social-link.tiktok:hover {
+  background: #010101;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact-info p {
+  margin: 0;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.copyright {
+  grid-column: span 2;
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* =======================
+   RESPONSIVE
+======================= */
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .footer-brand {
+    text-align: center;
+  }
+
+  .footer-contacto {
+    align-items: center;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+
+  .contact-info {
+    align-items: center;
+  }
+
+  .copyright {
+    grid-column: span 1;
+  }
+}
